@@ -1,0 +1,20 @@
+easy_admin:
+    entities:
+          # change the following to the namespaces of your own entities
+          Product :
+              class: AppBundle\Entity\Product
+          Category :
+              class: AppBundle\Entity\Category
+          Subcategory :
+              class: AppBundle\Entity\Subcategory
+          Theme :
+              class: AppBundle\Entity\Theme
+          Comment :
+              class: AppBundle\Entity\Comment
+          Role :
+              class: AppBundle\Entity\Role
+          OptionPurchase :
+              class: AppBundle\Entity\OptionPurchase
+          Users :
+              class: AppBundle\Entity\Users
+    site_name: '<h1>Merry Kitschmas Admin Board</h1>'
