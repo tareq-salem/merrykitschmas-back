@@ -21,12 +21,13 @@ class Subcategory
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"Subapi"});
+     * @Groups({"api"});
      */
     private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="subcategories")
+     * @Groups({"api"});
      */
     private $products;
 

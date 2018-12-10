@@ -58,4 +58,35 @@ class SubcategoryController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/subcategory/{id}", name="subcategory")
+     * @Method({"GET"})
+     * @param $id
+     * @return JsonResponse
+     */
+    public function getCategory($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $subcategoryId = $em->getRepository(Subcategory::class)->find($id);
+
+        if (!$subcategoryId) {
+            throw $this->createNotFoundException(
+                'No Category found for id '.$id
+            );
+        }
+
+        $query = $em->createQueryBuilder();
+
+        $query->select('s')
+            ->from('App\Entity\Subcategory', 's')
+            ->where('s.id = :id')
+            ->setParameter('id', $subcategoryId);
+
+        $subcategory = $query->getQuery()->getResult();
+        $data = $this->get('serializer')->serialize($subcategory, 'json', ['groups' => "api"]);
+
+        return new JsonResponse($data, 200, [], true);
+    }
 }

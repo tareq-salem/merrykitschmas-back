@@ -27,6 +27,7 @@ class Category
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="categories")
+     * @Groups({"api"});
      */
     private $products;
 

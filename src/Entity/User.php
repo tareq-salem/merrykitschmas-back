@@ -69,6 +69,13 @@ class User implements UserInterface
      */
     private $purchases;
 
+     /**
+      * @ORM\Column(type="string", length=255, unique=true, nullable=true)
+      */
+     private $apiToken;
+
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -254,6 +261,23 @@ class User implements UserInterface
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
+
+    /**
+     * @return mixed
+     */
+    public function getApiToken()
+    {
+        return $this->apiToken;
+    }
+
+    /**
+     * @param mixed $apiToken
+     */
+    public function setApiToken($apiToken): void
+    {
+        $this->apiToken = $apiToken;
+    }
+
 
     /**
      * @see UserInterface

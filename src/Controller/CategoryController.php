@@ -44,7 +44,7 @@ class CategoryController extends AbstractController
 //    }
 
     /**
-     * @Route("/categories", name="category")
+     * @Route("/categories", name="categories")
      * @Method({"GET"})
      * @return Response
      */
@@ -59,6 +59,38 @@ class CategoryController extends AbstractController
 
         return new JsonResponse($data, 200, [], true);
     }
+
+    /**
+     * @Route("/category/{id}", name="category")
+     * @Method({"GET"})
+     * @param $id
+     * @return JsonResponse
+     */
+    public function getCategory($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categoryId = $em->getRepository(Category::class)->find($id);
+
+        if (!$categoryId) {
+            throw $this->createNotFoundException(
+                'No Category found for id '.$id
+            );
+        }
+
+        $query = $em->createQueryBuilder();
+
+        $query->select('c')
+            ->from('App\Entity\Category', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $categoryId);
+
+        $category = $query->getQuery()->getResult();
+        $data = $this->get('serializer')->serialize($category, 'json', ['groups' => "api"]);
+
+        return new JsonResponse($data, 200, [], true);
+    }
+
 
 //    /**
 //     * @Route("/category/delete/{id}", name="category_delete")

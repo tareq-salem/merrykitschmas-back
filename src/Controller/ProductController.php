@@ -59,6 +59,9 @@ class ProductController extends AbstractController
         $subcategory = $request->query->get('sub');
         $theme = $request->query->get('theme');
         $option = $request->query->get('opt');
+        $order = $request->query->get('orderby');
+
+
 
         $query = $em->createQueryBuilder();
 
@@ -80,6 +83,14 @@ class ProductController extends AbstractController
                 ->addSelect('s');
         }
 
+        if($option != null) {
+            $query->join('p.options', 'o')
+                ->andWhere('o.name = :opt')
+                ->setParameter('opt', $option)
+                ->addSelect('o');
+        }
+
+
         if($theme != null) {
             $query->join('p.themes', 't')
                 ->andWhere('t.name = :theme')
@@ -87,13 +98,65 @@ class ProductController extends AbstractController
                 ->addSelect('t');
         }
 
-//        $query->orderBy('p.price', 'ASC');
+        if($order != null && $order =='pasc') {
+            $query->orderBy('p.price', 'ASC');
+
+        }
+
+        if($order != null && $order == 'pdesc'){
+            $query->orderBy('p.price', 'DESC');
+        }
+
+        if($order != null && $order =='dasc') {
+            $query->orderBy('p.created_at', 'ASC');
+
+        }
+
+        if($order != null && $order == 'ddesc'){
+            $query->orderBy('p.created_at', 'DESC');
+        }
+
+
 
         $products = $query->getQuery()->getResult();
         $data = $this->get('serializer')->serialize($products, 'json', ['groups' => "api"]);
 
         return new JsonResponse($data, 200, [], true);
     }
+
+    /**
+     * @Route("/product/{id}", name="product")
+     * @Method({"GET"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getProduct($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $productId = $em->getRepository(Product::class)->find($id);
+
+        if (!$productId) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $query = $em->createQueryBuilder();
+
+        $query->select('p')
+            ->from('App\Entity\Product', 'p')
+            ->where('p.id = :id')
+            ->setParameter('id', $productId);
+
+        $product = $query->getQuery()->getResult();
+
+        $data = $this->get('serializer')->serialize($product, 'json', ['groups' => "api"]);
+
+        return new JsonResponse($data, 200, [], true);
+    }
+
+
 
 
 
