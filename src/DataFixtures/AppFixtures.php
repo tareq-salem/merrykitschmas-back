@@ -170,11 +170,6 @@ class AppFixtures extends Fixture
             for ($i = 0; $i < 5; $i++) {
                 $dateTime = new \DateTime();
                 $dateTime->add(new \DateInterval('P'.mt_rand(0, 10).'D'));
-                $comment = new Comment();
-                $comment->setVisible(1);
-                $comment->setCreatedAt($dateTime);
-                $comment->setUser($users[mt_rand(0, 9)]);
-                $comment->setContent($commentContent[mt_rand(0, 12)]);
 
                 $product = new Product();
                 $product->setName($pullHommeStarwarsName[$i]);
@@ -191,7 +186,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[0]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[0]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 3; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -238,7 +248,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[0]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[1]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 5; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -285,7 +310,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[0]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[2]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 4; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -336,7 +376,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[1]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[0]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 2; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -381,7 +436,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[1]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[1]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 3; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -428,7 +498,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[1]);
                 $product->addSubcategory($subCategoriePull);
                 $product->addTheme($themes[2]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 5; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 2) {
                     $product->addOption($optionLE);
                 }
@@ -547,7 +632,22 @@ class AppFixtures extends Fixture
                 $product->addCategory($categories[1]);
                 $product->addSubcategory($subCategorieBonnet);
                 //$product->addTheme($themes[mt_rand(0, 2)]);
-                $product->addComment($comment);
+
+                $commentArray = $commentContent;
+                for ($j = 0; $j < 4; $j++) {
+
+                    $comment = new Comment();
+                    $comment->setVisible(1);
+                    $comment->setCreatedAt($dateTime);
+                    $comment->setUser($users[$j]);
+
+                    $nb =mt_rand(0, count($commentArray) - 1);
+
+                    $comment->setContent($commentArray[$nb]);
+                    array_slice($commentArray, $nb, 1);
+                    $product->addComment($comment);
+                }
+
                 if($i > 4) {
                     $product->addOption($optionLE);
                 }

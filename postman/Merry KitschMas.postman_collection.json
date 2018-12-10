@@ -128,7 +128,7 @@
 			"name": "Product",
 			"item": [
 				{
-					"name": "Get All Products",
+					"name": "Get All Products by parameter",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -137,12 +137,39 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/products",
+							"raw": "{{url}}/products?cat=Homme&sub=Pull&theme=Star%20Wars&orderby=ddesc&opt=Livraison%20Express",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"products"
+							],
+							"query": [
+								{
+									"key": "cat",
+									"value": "Homme",
+									"description": "Categorie"
+								},
+								{
+									"key": "sub",
+									"value": "Pull",
+									"description": "SubCategorie"
+								},
+								{
+									"key": "theme",
+									"value": "Star%20Wars",
+									"description": "Theme"
+								},
+								{
+									"key": "orderby",
+									"value": "ddesc",
+									"description": "Ordre (pasc (prix asc), pdesc (prix desc), dasc (date asc), ddesc (date desc))"
+								},
+								{
+									"key": "opt",
+									"value": "Livraison%20Express",
+									"description": "Option (by name)"
+								}
 							]
 						}
 					},
@@ -165,27 +192,6 @@
 							"path": [
 								"product",
 								"id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get products by parameter",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/products",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"products"
 							]
 						}
 					},
@@ -802,7 +808,7 @@
 	],
 	"variable": [
 		{
-			"id": "0339668a-37b1-432f-a395-f3116a3b5787",
+			"id": "d48e0fb7-04ce-40cd-8c27-b773e45a8cc5",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"
