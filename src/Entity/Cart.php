@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CartRepository")
@@ -15,6 +16,7 @@ class Cart
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", unique=true)
+     * @Groups({"cart"});
      */
     private $id;
 
@@ -26,6 +28,7 @@ class Cart
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductCart", mappedBy="cart", orphanRemoval=true)
+     * @Groups({"cart"});
      */
     private $productCarts;
 

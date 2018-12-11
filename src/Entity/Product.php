@@ -16,13 +16,13 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", unique=true)
-     * @Groups({"product"});
+     * @Groups({"product", "cart"});
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"product"});
+     * @Groups({"product", "cart"});
      */
     private $name;
 

@@ -21,10 +21,10 @@ class CommentController extends AbstractController
      * @Method({"PUT"})
      * @param Request $request
      * @return JsonResponse
+     * @throws \Exception
      */
     public function addComment(Request $request)
     {
-        dump($request);
 
         $content = $request->request->get('content');
         $productId = $request->request->get('product');
