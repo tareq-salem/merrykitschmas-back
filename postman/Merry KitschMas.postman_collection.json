@@ -271,10 +271,30 @@
 					"name": "add comment",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "content",
+									"value": "blabla",
+									"description": "String",
+									"type": "text"
+								},
+								{
+									"key": "product",
+									"value": "1",
+									"description": "Id",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/comment",
@@ -808,7 +828,7 @@
 	],
 	"variable": [
 		{
-			"id": "d48e0fb7-04ce-40cd-8c27-b773e45a8cc5",
+			"id": "cc2650fe-3642-418f-8e23-fdcae2e06e0a",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"
