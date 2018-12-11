@@ -137,7 +137,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/products?cat=Homme&sub=Pull&theme=Star%20Wars&orderby=ddesc&opt=Livraison%20Express",
+							"raw": "{{url}}/products?cat=Homme&sub=Pull&theme=Star%20Wars&orderby=ddesc&opt=Livraison%20Express&stock=1",
 							"host": [
 								"{{url}}"
 							],
@@ -169,6 +169,10 @@
 									"key": "opt",
 									"value": "Livraison%20Express",
 									"description": "Option (by name)"
+								},
+								{
+									"key": "stock",
+									"value": "1"
 								}
 							]
 						}
@@ -988,7 +992,7 @@
 	],
 	"variable": [
 		{
-			"id": "bfbeb53c-882c-4712-91e0-973a483c41db",
+			"id": "bbba12df-6c3e-4094-a3c8-18a677e5a29b",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"

@@ -355,6 +355,19 @@ class Product
         return $this;
     }
 
+    public function hasStock()
+    {
+        $hasStock = false;
+
+        foreach ($this->productParameters as $parameter) {
+            if ($parameter->getQuantity() > 0) {
+                $hasStock = true;
+            }
+        }
+
+        return $hasStock;
+    }
+
     /**
      * @return Collection|ProductParameter[]
      */

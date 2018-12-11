@@ -59,15 +59,17 @@ class ProductController extends AbstractController
         $subcategory = $request->query->get('sub');
         $theme = $request->query->get('theme');
         $option = $request->query->get('opt');
+        $enStock = $request->query->get('stock');
         $order = $request->query->get('orderby');
 
 
 
         $query = $em->createQueryBuilder();
 
-        $query->select('p')
+        $query->select('p', 'pm')
             ->from('App\Entity\Product', 'p')
-            ->where('p.visible = 1');
+            ->where('p.visible = 1')
+            ->join('p.productParameters', 'pm');
 
         if($category != null) {
             $query->join('p.categories', 'c')
@@ -84,10 +86,10 @@ class ProductController extends AbstractController
         }
 
         if($option != null) {
-            $query->join('p.options', 'o')
-                ->andWhere('o.name = :opt')
-                ->setParameter('opt', $option)
-                ->addSelect('o');
+                $query->join('p.options', 'o')
+                    ->andWhere('o.name = :opt')
+                    ->setParameter('opt', $option)
+                    ->addSelect('o');
         }
 
 
@@ -116,10 +118,18 @@ class ProductController extends AbstractController
             $query->orderBy('p.created_at', 'DESC');
         }
 
-
-
         $products = $query->getQuery()->getResult();
-        $data = $this->get('serializer')->serialize($products, 'json', ['groups' => "product"]);
+        $endProducts = [];
+
+        if($enStock == 1) {
+            foreach($products as $product) {
+                if($product->hasStock()) {
+                    array_push($endProducts, $product);
+                }
+            }
+        }
+
+        $data = $this->get('serializer')->serialize($endProducts, 'json', ['groups' => "product"]);
 
         return new JsonResponse($data, 200, [], true);
     }
