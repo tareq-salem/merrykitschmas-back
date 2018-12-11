@@ -832,74 +832,6 @@
 			]
 		},
 		{
-			"name": "Role",
-			"item": [
-				{
-					"name": "get role",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add role",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete role",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Purchase",
 			"item": [
 				{
@@ -966,6 +898,38 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Get Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/search?q=atomique",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "atomique"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -992,7 +956,7 @@
 	],
 	"variable": [
 		{
-			"id": "bbba12df-6c3e-4094-a3c8-18a677e5a29b",
+			"id": "fa0e0cbb-fe90-4a6b-b580-42e85e4f87ba",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"
