@@ -27,7 +27,7 @@ class ThemeController extends AbstractController
             ->getRepository(Theme::class);
         $themes = $repository->findAll();
 
-        $data = $this->get('serializer')->serialize($themes, 'json', ['groups' => "apiTheme"]);
+        $data = $this->get('serializer')->serialize($themes, 'json', ['groups' => "theme"]);
 
         return new JsonResponse($data, 200, [], true);
 

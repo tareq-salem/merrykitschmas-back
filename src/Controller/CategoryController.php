@@ -55,7 +55,7 @@ class CategoryController extends AbstractController
             ->getRepository(Category::class);
         $categories = $repository->findAll();
 
-        $data = $this->get('serializer')->serialize($categories, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($categories, 'json', ['groups' => "category"]);
 
         return new JsonResponse($data, 200, [], true);
     }
@@ -86,7 +86,7 @@ class CategoryController extends AbstractController
             ->setParameter('id', $categoryId);
 
         $category = $query->getQuery()->getResult();
-        $data = $this->get('serializer')->serialize($category, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($category, 'json', ['groups' => "category"]);
 
         return new JsonResponse($data, 200, [], true);
     }

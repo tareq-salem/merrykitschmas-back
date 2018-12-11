@@ -16,71 +16,70 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", unique=true)
-     * @Groups({"api"});
+     * @Groups({"product"});
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"api"});
+     * @Groups({"product"});
      */
     private $name;
 
     /**
      * @ORM\Column(type="float", scale=2)
-     * @Groups({"api"});
+     * @Groups({"product"});
      */
     private $price;
 
     /**
      * @ORM\Column(type="text", length=255)
-     * @Groups({"api"});
+     * @Groups({"product"});
      */
     private $description;
 
     /**
      * @ORM\Column(type="text", length=255, nullable=true)
-     * @Groups({"api"});
+     * @Groups({"product"});
      */
     private $image;
 
    /**
-     * @ORM\Column(type="smallint")
-    * @Groups({"api"});
-     */
+    * @ORM\Column(type="smallint")
+    */
     private $visible;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"api"});
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"api"});
      */
     private $updated_at;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="product", orphanRemoval=true, cascade={"persist"})
-     * @Groups({"api"});
+     * @Groups({"comment"});
      */
     private $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\OptionPurchase", mappedBy="products")
-     * @Groups({"api"});
+     * @Groups({"option"});
      */
     private $options;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Subcategory", mappedBy="products")
+     * @Groups({"subcategory"});
      */
     private $subcategories;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Theme", mappedBy="products")
+     * @Groups({"theme"});
      */
     private $themes;
 
@@ -91,12 +90,13 @@ class Product
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductParameter", mappedBy="product", orphanRemoval=true, cascade={"persist"})
-     * @Groups({"api"});
+     * @Groups({"productParameter"});
      */
     private $productParameters;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", mappedBy="products")
+     * @Groups({"category"});
      */
     private $categories;
 

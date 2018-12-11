@@ -21,7 +21,7 @@ class OptionPurchase
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"api"});
+     * @Groups({"option"});
      */
     private $name;
 

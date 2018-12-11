@@ -19,13 +19,13 @@ class ProductParameter
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"api"});
+     * @Groups({"productParameter"});
      */
     private $size;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"api"});
+     * @Groups({"productParameter"});
      */
     private $quantity;
 

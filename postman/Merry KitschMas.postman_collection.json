@@ -185,13 +185,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/product/id",
+							"raw": "{{url}}/product/6",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"product",
-								"id"
+								"6"
 							]
 						}
 					},
@@ -423,7 +423,7 @@
 			"name": "Category",
 			"item": [
 				{
-					"name": "get all categories",
+					"name": "get Categories",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -438,6 +438,28 @@
 							],
 							"path": [
 								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/category/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"1"
 							]
 						}
 					},
@@ -480,6 +502,144 @@
 							],
 							"path": [
 								"category",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubCategory",
+			"item": [
+				{
+					"name": "get Subcategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/subcategories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subcategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Subcategory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/subcategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Subcategory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/subcategory/id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"subcategory",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Theme",
+			"item": [
+				{
+					"name": "get Themes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/themes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"themes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Theme",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/theme",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"theme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Theme",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/theme/id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"theme",
 								"id"
 							]
 						}
@@ -828,7 +988,7 @@
 	],
 	"variable": [
 		{
-			"id": "cc2650fe-3642-418f-8e23-fdcae2e06e0a",
+			"id": "bfbeb53c-882c-4712-91e0-973a483c41db",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"

@@ -52,7 +52,7 @@ class SubcategoryController extends AbstractController
             ->getRepository(Subcategory::class);
         $subcategories = $repository->findAll();
 
-        $data = $this->get('serializer')->serialize($subcategories, 'json', ['groups' => 'Subapi']);
+        $data = $this->get('serializer')->serialize($subcategories, 'json', ['groups' => 'subcategory']);
 
         return new JsonResponse($data, 200, [], true);
 

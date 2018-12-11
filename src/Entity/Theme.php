@@ -21,7 +21,7 @@ class Theme
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"apiTheme"});
+     * @Groups({"theme"});
      */
     private $name;
 

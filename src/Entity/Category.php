@@ -21,13 +21,12 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"api"});
+     * @Groups({"category"});
      */
     private $name;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="categories")
-     * @Groups({"api"});
      */
     private $products;
 

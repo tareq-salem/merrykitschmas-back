@@ -19,32 +19,31 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"api"});
+     * @Groups({"comment"});
      */
     private $content;
 
     /**
      * @ORM\Column(type="smallint")
-     * @Groups({"api"});
      */
     private $visible;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"api"});
+     * @Groups({"comment"});
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"api"});
+     * @Groups({"comment"});
      */
     private $updated_at;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"api"});
+     * @Groups({"user"});
      */
     private $user;
 

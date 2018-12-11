@@ -119,7 +119,7 @@ class ProductController extends AbstractController
 
 
         $products = $query->getQuery()->getResult();
-        $data = $this->get('serializer')->serialize($products, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($products, 'json', ['groups' => "product"]);
 
         return new JsonResponse($data, 200, [], true);
     }
@@ -151,7 +151,7 @@ class ProductController extends AbstractController
 
         $product = $query->getQuery()->getResult();
 
-        $data = $this->get('serializer')->serialize($product, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($product, 'json', ['groups' => ["product", "category", "subcategory", "theme", "option", "comment", "user"]]);
 
         return new JsonResponse($data, 200, [], true);
     }

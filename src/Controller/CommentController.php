@@ -43,7 +43,7 @@ class CommentController extends AbstractController
         $em->persist($comment);
         $em->flush();
 
-        $data = $this->get('serializer')->serialize($comment, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($comment, 'json', ['groups' => ["comment", "user"]]);
 
         return new JsonResponse($data, 200, [], true);
     }
