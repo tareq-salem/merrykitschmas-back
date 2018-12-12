@@ -130,7 +130,7 @@ class ProductController extends AbstractController
                 }
             }
         } else {
-            array_push($endProducts, $products);
+            $endProducts = $products;
         }
 
         dump($endProducts);
