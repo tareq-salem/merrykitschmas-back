@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query\Expr\Join;
 use App\Repository\ProductRepository;
 
@@ -49,6 +50,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/products", name="products")
      * @Method({"GET"})
+     * @param Request $request
      * @return JsonResponse
      */
     public function getAllProduct(Request $request)
@@ -127,7 +129,11 @@ class ProductController extends AbstractController
                     array_push($endProducts, $product);
                 }
             }
+        } else {
+            array_push($endProducts, $products);
         }
+
+        dump($endProducts);
 
         $data = $this->get('serializer')->serialize($endProducts, 'json', ['groups' => "product"]);
 
@@ -137,7 +143,6 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{id}", name="product")
      * @Method({"GET"})
-     * @param Request $request
      * @return JsonResponse
      */
     public function getProduct($id)
