@@ -6,8 +6,6 @@ use App\Entity\Cart;
 use App\Entity\Product;
 use App\Entity\ProductCart;
 use App\Entity\User;
-use App\Service\SecurityService;
-use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -19,21 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CartController extends AbstractController
 {
-    /**
-     * @Route("/userinfo", name="userinfo")
-     * @Method({"GET"})
-     * @param Request $request
-     */
-    public function test(Request $request, Security $security)
-    {
-        /** @var User $user */
-        $user = $security->getUser();
-
-        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => ["user", "cart"]]);
-        return new JsonResponse($data, 200, [], true);
-    }
-
-
     /**
      * @Route("/cart/add", name="cart")
      * @Method({"PUT"})
