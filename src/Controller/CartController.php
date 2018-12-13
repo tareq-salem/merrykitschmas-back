@@ -20,7 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class CartController extends AbstractController
 {
     /**
-     * @Route("/test", name="test")
+     * @Route("/userinfo", name="userinfo")
      * @Method({"GET"})
      * @param Request $request
      */
@@ -29,8 +29,7 @@ class CartController extends AbstractController
         /** @var User $user */
         $user = $security->getUser();
 
-        dump($user);
-        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => "user"]);
+        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => ["user", "cart"]]);
         return new JsonResponse($data, 200, [], true);
     }
 
@@ -142,7 +141,6 @@ class CartController extends AbstractController
         /** @var User $user */
         $user = $security->getUser();
         $message = null;
-
         if($user == null) {
             throw new AuthenticationException();
         }
@@ -192,6 +190,7 @@ class CartController extends AbstractController
             $data = $this->get('serializer')->serialize($cart, 'json', ['groups' => ["cart", "productCart", "option", "size"]]);
         }
 
+        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => "user"]);
         return new JsonResponse($data, 200, [], true);
     }
 }
