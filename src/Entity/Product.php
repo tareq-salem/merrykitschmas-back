@@ -16,19 +16,19 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", unique=true)
-     * @Groups({"cart"});
+     * @Groups({"product", "productCart"});
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"product", "cart"});
+     * @Groups({"product", "productCart"});
      */
     private $name;
 
     /**
      * @ORM\Column(type="float", scale=2)
-     * @Groups({"product"});
+     * @Groups({"product", "productCart"});
      */
     private $price;
 
@@ -40,7 +40,7 @@ class Product
 
     /**
      * @ORM\Column(type="text", length=255, nullable=true)
-     * @Groups({"product"});
+     * @Groups({"product", "productCart"});
      */
     private $image;
 

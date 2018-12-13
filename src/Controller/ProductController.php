@@ -166,7 +166,7 @@ class ProductController extends AbstractController
 
         $product = $query->getQuery()->getResult();
 
-        $data = $this->get('serializer')->serialize($product, 'json', ['groups' => ["product", "category", "subcategory", "theme", "option", "comment", "user"]]);
+        $data = $this->get('serializer')->serialize($product, 'json', ['groups' => ["product", "category", "subcategory", "theme", "option", "comment", "user", "size"]]);
 
         return new JsonResponse($data, 200, [], true);
     }

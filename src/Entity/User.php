@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -39,12 +40,12 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $isactive;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $created_at;
 
@@ -71,9 +72,15 @@ class User implements UserInterface
 
      /**
       * @ORM\Column(type="string", length=255, unique=true, nullable=true)
+      * @Groups({"token"});
       */
      private $apiToken;
 
+    /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
 
     public function __construct()
@@ -232,6 +239,15 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    public function addRoles($role):self
+    {
+        if (!array_key_exists($role, $this->roles)) {
+            array_push($this->roles, $role);
+        }
+
+        return $this;
+    }
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -277,6 +293,23 @@ class User implements UserInterface
     {
         $this->apiToken = $apiToken;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($password): void
+    {
+        $this->plainPassword = $password;
+    }
+
 
 
     /**

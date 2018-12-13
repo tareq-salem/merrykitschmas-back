@@ -21,7 +21,7 @@ class ProductCart
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"cart"});
+     * @Groups({"productCart"});
      */
     private $quantity;
 
@@ -44,9 +44,15 @@ class ProductCart
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="product_carts")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"cart"});
+     * @Groups({"productCart"});
      */
     private $product;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"size"});
+     */
+    private $size;
 
     public function __construct()
     {
@@ -154,6 +160,18 @@ class ProductCart
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getSize(): ?string
+    {
+        return $this->size;
+    }
+
+    public function setSize(string $size): self
+    {
+        $this->size = $size;
 
         return $this;
     }
