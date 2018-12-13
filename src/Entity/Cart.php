@@ -14,6 +14,7 @@ class Cart
 {
     /**
      * @ORM\Id()
+     *
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", unique=true)
      * @Groups({"cart"});
@@ -21,7 +22,7 @@ class Cart
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="cart", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="cart")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

@@ -36,13 +36,13 @@ class CartController extends AbstractController
 
 
     /**
-     * @Route("/cart", name="cart")
+     * @Route("/cart/add", name="cart")
      * @Method({"PUT"})
      * @param Request $request
      * @return JsonResponse
      * @throws \Exception
      */
-    public function addCart(Request $request, Security $security)
+    public function addProductInCart(Request $request, Security $security)
     {
         /** @var User $user */
         $user = $security->getUser();
@@ -55,6 +55,7 @@ class CartController extends AbstractController
         $size = $request->request->get('size');
         $quantity = $request->request->get('quantity');
         $option = $request->request->get('option');
+        $sameProduct = false;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -69,17 +70,13 @@ class CartController extends AbstractController
             $cart->setUser($user);
         }
 
-        /** @var ProductCart $existingProductInCart */
-        $existingProductInCart = $em->getRepository(ProductCart::class)->findOneBy(["product" => $product, "cart" => $cart]);
+        /** @var ProductCart $existingProductsInCart */
+        $existingProductsInCart = $em->getRepository(ProductCart::class)->findBy(["product" => $product, "cart" => $cart]);
         $sizeOfExistingProduct = null;
         $quantityOfExistingProduct = null;
 
-        if($existingProductInCart) {
-            $sizeOfExistingProduct = $existingProductInCart->getSize();
-            $quantityOfExistingProduct = $existingProductInCart->getQuantity();
-        }
-
-        if ($existingProductInCart == null) {
+        //Si le produit(ID) que j'ajoute n'existe pas dans mon cart
+        if ($existingProductsInCart == null) {
 
             $newCartProduct = new ProductCart();
             $newCartProduct->setProduct($product);
@@ -91,14 +88,38 @@ class CartController extends AbstractController
             $cart->addProductCart($newCartProduct);
 
             $em->persist($newCartProduct);
+            $sameProduct = true;
+        }
 
-        } elseif($sizeOfExistingProduct == $size) {
+        //Si le produit(ID) que j'ajoute existe dans mon cart
+        if($existingProductsInCart) {
+            //Je fais une boucle sur tous mes produits du cart qui ont le même ID que celui que j'ajoute pour comparer les tailles
+            foreach($existingProductsInCart as $existingProductInCart) {
 
-            $existingProductInCart->setQuantity($quantityOfExistingProduct + $quantity);
+                $sizeOfExistingProduct = $existingProductInCart->getSize();
+                $quantityOfExistingProduct = $existingProductInCart->getQuantity();
 
+                //Si la taille est la même, j'additionne les quantités
+                if($sizeOfExistingProduct == $size) {
+                    $existingProductInCart->setQuantity($quantityOfExistingProduct + $quantity);
+                    $em->persist($existingProductInCart);
+                    $sameProduct = true;
+                }
+            }
+        }
 
-            $em->persist($existingProductInCart);
+        //Si les produits sont les mêmes, mais la taille diffèrent, on ajoute un nouveau produit avec une taille différente
+        if ($sameProduct == false) {
+            $newCartProduct = new ProductCart();
+            $newCartProduct->setProduct($product);
+            $newCartProduct->setQuantity($quantity);
+            $newCartProduct->setSize($size);
+            if ($option != null) {
+                $newCartProduct->addProductCartOptionProduct($option);
+            }
+            $cart->addProductCart($newCartProduct);
 
+            $em->persist($newCartProduct);
         }
 
         $em->persist($cart);
@@ -120,7 +141,8 @@ class CartController extends AbstractController
     {
         /** @var User $user */
         $user = $security->getUser();
-        dump($user);
+        $message = null;
+
         if($user == null) {
             throw new AuthenticationException();
         }
@@ -129,20 +151,47 @@ class CartController extends AbstractController
 
         /** @var User $user */
         $cart = $user->getCart();
-        dump($cart);
 
         if ($cart == null) {
-
-            throw new AuthenticationException();
+            $message = "No cart for ".$user->getUsername() ;
         }
 
         if($cart) {
-
             $em->remove($cart);
             $em->flush();
+            $message = "Cart deleted for ".$user->getUsername();
         }
 
-        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => "user"]);
+        $data = $this->get('serializer')->serialize($message, 'json');
+        return new JsonResponse($data, 200, [], true);
+    }
+
+    /**
+     * @Route("/cart/", name="get-cart")
+     * @Method({"GET"})
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function getCart(Request $request, Security $security)
+    {
+        /** @var User $user */
+        $user = $security->getUser();
+
+        if($user == null) {
+            throw new AuthenticationException();
+        }
+
+        /** @var User $user */
+        $cart = $user->getCart();
+
+        if ($cart == null) {
+            $message = "No cart for ".$user->getUsername();
+            $data = $this->get('serializer')->serialize($message, 'json');
+        } else {
+            $data = $this->get('serializer')->serialize($cart, 'json', ['groups' => ["cart", "productCart", "option", "size"]]);
+        }
+
         return new JsonResponse($data, 200, [], true);
     }
 }

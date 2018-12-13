@@ -10,6 +10,7 @@ use App\Entity\Comment;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Security\Core\Security;
 
 
 
@@ -23,14 +24,15 @@ class CommentController extends AbstractController
      * @return JsonResponse
      * @throws \Exception
      */
-    public function addComment(Request $request)
+    public function addComment(Request $request, Security $security)
     {
+        /** @var User $user */
+        $user = $security->getUser();
 
         $content = $request->request->get('content');
         $productId = $request->request->get('product');
 
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->findOneById(mt_rand(1, 8));
         $product = $em->getRepository(Product::class)->findOneById($productId);
 
         $comment = new Comment();
