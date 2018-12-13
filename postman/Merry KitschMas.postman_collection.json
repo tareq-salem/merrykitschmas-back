@@ -9,22 +9,73 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "Inscription User",
+					"name": "test security",
 					"request": {
-						"method": "POST",
-						"header": [],
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "123456789",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/user/signup",
+							"raw": "{{url}}/test/security",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"user",
-								"signup"
+								"test",
+								"security"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inscription User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "tareqsalem20",
+									"type": "text"
+								},
+								{
+									"key": "plainPassword[first]",
+									"value": "12345tareq",
+									"type": "text"
+								},
+								{
+									"key": "plainPassword[second]",
+									"value": "12345tareq",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
 							]
 						}
 					},
@@ -38,22 +89,33 @@
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/json",
+								"value": "application/x-www-form-urlencoded",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "tareqsalem20",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345tareq",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
-							"raw": "{{uri}}/user/signin",
+							"raw": "{{url}}/api/login",
 							"host": [
-								"{{uri}}"
+								"{{url}}"
 							],
 							"path": [
-								"user",
-								"signin"
+								"api",
+								"login"
 							]
 						}
 					},
@@ -137,7 +199,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/products?cat=Homme&sub=Pull&theme=Star%20Wars&orderby=ddesc&opt=Livraison%20Express&stock=1",
+							"raw": "{{url}}/products?cat=Homme&sub=Pull&theme=Star%20Wars&orderby=ddesc",
 							"host": [
 								"{{url}}"
 							],
@@ -168,11 +230,13 @@
 								{
 									"key": "opt",
 									"value": "Livraison%20Express",
-									"description": "Option (by name)"
+									"description": "Option (by name)",
+									"disabled": true
 								},
 								{
 									"key": "stock",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								}
 							]
 						}
@@ -659,10 +723,33 @@
 					"name": "add cart",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "raw",
-							"raw": ""
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "M",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{url}}/cart",
@@ -912,7 +999,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/search?q=atomique",
+							"raw": "{{url}}/search?q=chewbacca merry pull homme",
 							"host": [
 								"{{url}}"
 							],
@@ -922,7 +1009,7 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "atomique"
+									"value": "chewbacca merry pull homme"
 								}
 							]
 						}
@@ -956,7 +1043,7 @@
 	],
 	"variable": [
 		{
-			"id": "fa0e0cbb-fe90-4a6b-b580-42e85e4f87ba",
+			"id": "eefab224-19ea-4a0b-b671-ae941c7bc0e4",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"

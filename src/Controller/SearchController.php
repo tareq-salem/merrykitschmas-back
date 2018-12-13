@@ -24,12 +24,19 @@ class SearchController extends AbstractController
         $query = $em->getRepository(Product::class)->createQueryBuilder('p');
 
         $terms = $request->query->get('q');
+        $terms = explode(' ', $terms);
 
         $query->where('p.visible = 1')
-            ->andWhere('p.name LIKE :query')
-            ->setParameter('query', '%'.$terms.'%');
+            ->leftJoin('p.categories', 'c')
+            ->leftJoin('p.subcategories', 's')
+            ->leftJoin('p.themes', 't');
 
-        $products = $query->getQuery()->getResult();;
+        for($i = 0; $i < count($terms); $i++) {
+            $query->andWhere('p.name LIKE :query'.$i.' OR c.name LIKE :query'.$i.' OR s.name LIKE :query'.$i.' OR t.name LIKE :query'.$i)
+            ->setParameter('query'.$i, '%'.$terms[$i].'%');
+        }
+
+        $products = $query->getQuery()->getResult();
 
         $data = $this->get('serializer')->serialize($products, 'json', ['groups' => "product"]);
         return new JsonResponse($data, 200, [], true);
