@@ -46,7 +46,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"user"});
      */
     private $created_at;
 
@@ -58,13 +57,11 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user", orphanRemoval=true)
-     * @Groups({"user"});
      */
     private $comments;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Cart", mappedBy="user", cascade={"persist", "remove"})
-     * @Groups({"user"});
      */
     private $cart;
 

@@ -65,7 +65,7 @@ class SubcategoryController extends AbstractController
      * @param $id
      * @return JsonResponse
      */
-    public function getCategory($id)
+    public function getSubcategory($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -85,7 +85,7 @@ class SubcategoryController extends AbstractController
             ->setParameter('id', $subcategoryId);
 
         $subcategory = $query->getQuery()->getResult();
-        $data = $this->get('serializer')->serialize($subcategory, 'json', ['groups' => "api"]);
+        $data = $this->get('serializer')->serialize($subcategory, 'json', ['groups' => "subcategory"]);
 
         return new JsonResponse($data, 200, [], true);
     }

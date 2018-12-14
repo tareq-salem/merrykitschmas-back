@@ -176,7 +176,6 @@ class CartController extends AbstractController
             $data = $this->get('serializer')->serialize($cart, 'json', ['groups' => ["cart", "productCart", "option", "size"]]);
         }
 
-        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => "user"]);
         return new JsonResponse($data, 200, [], true);
     }
 
