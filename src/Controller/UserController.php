@@ -26,7 +26,7 @@ class UserController extends AbstractController
             throw new AuthenticationException();
         }
 
-        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => ["user", "cart"]]);
+        $data = $this->get('serializer')->serialize($user, 'json', ['groups' => ["user", "cart", "productCart"]]);
         return new JsonResponse($data, 200, [], true);
     }
 }
