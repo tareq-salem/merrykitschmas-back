@@ -15,7 +15,7 @@
 						"header": [
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"value": "$2y$13$PGHs.6aTtfB0A5OOKEx.h.d7AHzCj8sZHg1KlQjiF4QPoFwjQhiDO",
 								"type": "text"
 							}
 						],
@@ -52,7 +52,7 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "user123",
+									"value": "benedicte",
 									"type": "text"
 								},
 								{
@@ -97,7 +97,7 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "user123",
+									"value": "benedicte",
 									"type": "text"
 								},
 								{
@@ -223,13 +223,13 @@
 							"urlencoded": [
 								{
 									"key": "content",
-									"value": "blabla",
+									"value": "Super ce produit !",
 									"description": "String",
 									"type": "text"
 								},
 								{
 									"key": "product",
-									"value": "1",
+									"value": "3",
 									"description": "Id",
 									"type": "text"
 								}
@@ -386,7 +386,7 @@
 							},
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "$2y$13$ETFlh8U4jJb1Qhn.4MnrfO4w3W2KigV4qh7cnwk5VVxHAs/Nnv/ya",
+								"value": "$2y$13$PGHs.6aTtfB0A5OOKEx.h.d7AHzCj8sZHg1KlQjiF4QPoFwjQhiDO",
 								"type": "text"
 							}
 						],
@@ -395,7 +395,7 @@
 							"urlencoded": [
 								{
 									"key": "product",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								},
 								{
@@ -405,7 +405,7 @@
 								},
 								{
 									"key": "size",
-									"value": "XXL",
+									"value": "S",
 									"type": "text"
 								}
 							]
@@ -430,7 +430,7 @@
 						"header": [
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"value": "$2y$13$PGHs.6aTtfB0A5OOKEx.h.d7AHzCj8sZHg1KlQjiF4QPoFwjQhiDO",
 								"type": "text"
 							},
 							{
@@ -478,7 +478,7 @@
 						"header": [
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"value": "$2y$13$PGHs.6aTtfB0A5OOKEx.h.d7AHzCj8sZHg1KlQjiF4QPoFwjQhiDO",
 								"type": "text"
 							}
 						],
@@ -505,7 +505,7 @@
 						"header": [
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"value": "$2y$13$PGHs.6aTtfB0A5OOKEx.h.d7AHzCj8sZHg1KlQjiF4QPoFwjQhiDO",
 								"type": "text"
 							}
 						],
@@ -585,7 +585,7 @@
 	],
 	"variable": [
 		{
-			"id": "58803cea-37b7-46c2-a5b5-5d5ab68e47dc",
+			"id": "63b5d41b-5d03-49e0-a40b-ac87817fd610",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"
