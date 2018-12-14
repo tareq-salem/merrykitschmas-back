@@ -9,13 +9,13 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "test security",
+					"name": "User Info",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "X-AUTH-TOKEN",
-								"value": "123456789",
+								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
 								"type": "text"
 							}
 						],
@@ -24,13 +24,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/test/security",
+							"raw": "{{url}}/user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"test",
-								"security"
+								"user"
 							]
 						}
 					},
@@ -53,17 +52,17 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "tareqsalem20",
+									"value": "user123",
 									"type": "text"
 								},
 								{
 									"key": "plainPassword[first]",
-									"value": "12345tareq",
+									"value": "password",
 									"type": "text"
 								},
 								{
 									"key": "plainPassword[second]",
-									"value": "12345tareq",
+									"value": "password",
 									"type": "text"
 								}
 							]
@@ -98,12 +97,12 @@
 							"urlencoded": [
 								{
 									"key": "username",
-									"value": "tareqsalem20",
+									"value": "user123",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "12345tareq",
+									"value": "password",
 									"type": "text"
 								}
 							]
@@ -116,69 +115,6 @@
 							"path": [
 								"api",
 								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "User Info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete User",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/user",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"user"
 							]
 						}
 					},
@@ -253,78 +189,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/product/6",
+							"raw": "{{url}}/product/1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"product",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Product",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/product",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Product",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/product/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"product",
-								"id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Product",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/product/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"product",
-								"id"
+								"1"
 							]
 						}
 					},
@@ -371,115 +242,6 @@
 							],
 							"path": [
 								"comment"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update comment ",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/comment/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"comment",
-								"id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete comment ",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/comment/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"comment",
-								"id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all comments",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/comments",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"comments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all comments by user",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/comment/user_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"comment",
-								"user_id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all comments by product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/comment/product_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"comment",
-								"product_id"
 							]
 						}
 					},
@@ -532,49 +294,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "add category",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/category",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"category"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete category",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/category/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"category",
-								"id"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -603,43 +322,21 @@
 					"response": []
 				},
 				{
-					"name": "add Subcategory",
+					"name": "get Subcategory",
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/subcategory",
+							"raw": "{{url}}/subcategories",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"subcategory"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete Subcategory",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/subcategory/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"subcategory",
-								"id"
+								"subcategories"
 							]
 						}
 					},
@@ -670,49 +367,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "add Theme",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/theme",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"theme"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete Theme",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/theme/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"theme",
-								"id"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -720,7 +374,7 @@
 			"name": "Cart",
 			"item": [
 				{
-					"name": "add cart",
+					"name": "add product in cart",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -728,6 +382,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "$2y$13$ETFlh8U4jJb1Qhn.4MnrfO4w3W2KigV4qh7cnwk5VVxHAs/Nnv/ya",
 								"type": "text"
 							}
 						],
@@ -741,15 +400,91 @@
 								},
 								{
 									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "size",
+									"value": "XXL",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/cart/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product in cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
 									"value": "3",
+									"description": "ID du produit",
 									"type": "text"
 								},
 								{
 									"key": "size",
 									"value": "M",
+									"description": "Taille du produit",
 									"type": "text"
 								}
 							]
+						},
+						"url": {
+							"raw": "{{url}}/cart/delete/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"delete",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{url}}/cart",
@@ -767,218 +502,25 @@
 					"name": "delete cart",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "$2y$13$CIFi9w8b2YQk6U4CwOZ6jOsbOWUUA5Cb.HsT0XsxViPzNBiz4wyea",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/cart",
+							"raw": "{{url}}/cart/delete",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"cart"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get cart",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/cart",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"cart"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update cart",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/cart",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"cart"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Option",
-			"item": [
-				{
-					"name": "get all options",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/options",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"options"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add option",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/option",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"option"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete option",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/option/id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"option",
-								"id"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update option",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/option",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"option"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Purchase",
-			"item": [
-				{
-					"name": "get purchase",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/purchase",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"purchase"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get purchase by params",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/purchase",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"purchase"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete purchase",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/purchase",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"purchase"
+								"cart",
+								"delete"
 							]
 						}
 					},
@@ -999,7 +541,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{url}}/search?q=chewbacca merry pull homme",
+							"raw": "{{url}}/search?q=link jeux",
 							"host": [
 								"{{url}}"
 							],
@@ -1009,7 +551,7 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "chewbacca merry pull homme"
+									"value": "link jeux"
 								}
 							]
 						}
@@ -1043,7 +585,7 @@
 	],
 	"variable": [
 		{
-			"id": "eefab224-19ea-4a0b-b671-ae941c7bc0e4",
+			"id": "58803cea-37b7-46c2-a5b5-5d5ab68e47dc",
 			"key": "url",
 			"value": "localhost",
 			"type": "string"
