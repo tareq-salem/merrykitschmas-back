@@ -6,6 +6,9 @@ use App\Entity\Cart;
 use App\Entity\Product;
 use App\Entity\ProductCart;
 use App\Entity\User;
+use App\Service\SecurityService;
+use EasyCorp\Bundle\EasyAdminBundle\Tests\EventListener\EntityNotFoundException;
+use http\Env\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -175,5 +178,70 @@ class CartController extends AbstractController
 
         $data = $this->get('serializer')->serialize($user, 'json', ['groups' => "user"]);
         return new JsonResponse($data, 200, [], true);
+    }
+
+    /**
+     * @Route("/cart/delete/product", name="cart-product")
+     * @Method({"DELETE"})
+     * @param Request $request
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function deleteProductFromCart(Request $request, Security $security)
+    {
+
+        $productId = $request->request->get('product');
+        $size = $request->request->get('size');
+
+        /** @var User $user */
+        $user = $security->getUser();
+
+        if ($user == null) {
+            throw new AuthenticationException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var Cart $cart */
+        $cart = $user->getCart();
+
+        if ($cart == null) {
+            throw new EntityNotFoundException();
+        }
+
+        /** @var Product $product */
+        $product = $em->getRepository(Product::class)->findOneById($productId);
+
+        $query = $em->createQueryBuilder();
+
+        $query->select('p')
+            ->from('App\Entity\ProductCart', 'p')
+            ->where('p.cart = :cart')
+            ->setParameter('cart', $cart)
+            ->andWhere('p.product = :product')
+            ->setParameter('product', $product)
+            ->andWhere('p.size = :size')
+            ->setParameter('size', $size);
+
+
+        $productCartToDelete = $query->getQuery()->getOneOrNullResult();
+
+        if ($productCartToDelete){
+            $product->removeProductCart($productCartToDelete);
+            $cart->removeProductCart($productCartToDelete);
+            $em->remove($productCartToDelete);
+        }
+
+        /*$theNewCartProduct = new ProductCart();
+        $theNewCartProduct->setProduct($productToDelete);
+        $cart->removeProductCart($theNewCartProduct);
+        $em->persist($cart);*/
+
+        $em->flush();
+
+        $data = $this->get('serializer')->serialize($cart, 'json', ['groups' => ["cart", "productCart", "option", "size"]]);
+
+        return new JsonResponse($data, 200, [], true);
+
     }
 }
