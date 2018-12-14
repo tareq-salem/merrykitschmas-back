@@ -173,7 +173,7 @@ class ProductController extends AbstractController
                 "option",
                 "comment",
                 "user",
-                "size"
+                "productParameter"
                 ]
             ]
         );
